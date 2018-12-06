@@ -12,10 +12,10 @@
        <input type="number" class="form-control" name="volunteer_age" id="volunteer_age" placeholder="Age">
    </div>
    <div class="form-group">
-       <label for="disponible">Disponible : </label>
+       <label for="disponible">Disponibilité: </label>
        <select class="form-control" id="volunteer_availability" name="volunteer_availability">
-         <option>Disponible</option>
-         <option>Non Disponible</option>
+         <option value = "1">Disponible</option>
+         <option value = "0">Non Disponible</option>
       </select>
    </div>
    <div class="form-group">

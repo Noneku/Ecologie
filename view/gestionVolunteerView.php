@@ -23,13 +23,12 @@ include 'template/header.php';
         <th scope="row"><?php echo $value['volunteer_id']; ?></th>
         <td><?php echo $value['volunteer_name']; ?></td>
         <td><?php echo $value['volunteer_firstname'];?></td>
-        <td><?php echo $value['volunteer_availability'];?></td>
+        <td><?php convertAvailablelity($value);?></td>
+
         <td><a href = "">Plus d'infos</a></td>
         <td>
-        <?php
-        echo "<button type='button' class='btn btn-warning'>Modifier</button>";
-        echo "<button type='button' class='btn btn-danger ml-1'>Supprimer</button>";
-          ?>
+          <a href='../controller/updateVolunteer.php?id=<?php echo $value['volunteer_id']; ?>' class="btn  active bg-warning text-dark" role="button" aria-pressed="true">Modifier</a>
+          <a href='../controller/deleteVolunteer.php?id=<?php echo $value['volunteer_id']; ?>' class="btn  active bg-danger text-dark" role="button" aria-pressed="true">Supprimer</a>
         </td>
       </tr>
       <?php } ?>
