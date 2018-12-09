@@ -93,10 +93,10 @@ function sortsVolunteers($form, $db){
 
   }
 
-  //Sorts city
-  if(!empty($form['volunteer_city'])){
-    $sql .= ' WHERE ' .$form['volunteer_city'];
-  }
+  // //Sorts city
+  // if(!empty($form['volunteer_city'])){
+  //   $sql .= ' WHERE volunteer_city = ' .$form['volunteer_city'];
+  // }
 
   $query = $db->prepare($sql);
   $query->execute();
