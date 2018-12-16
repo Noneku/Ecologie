@@ -69,37 +69,45 @@ function updateVolunteer($value, $id, $db){
 //Function sorts
 function sortsVolunteers($form, $db){
   $sql = 'SELECT * FROM volunteers';
+  $param = [];
 
-  //Sorts Name and Age
+  //Vérifie si volunteer_city n'est pas vide et n'est pas NULL
+  if(!empty($form['volunteer_city']) || isset($form['availability']))
+  {
+    //Alors je rajoute un WHERE
+    $sql .= ' WHERE ';
+
+    //Sorts city
+    if(!empty($form['volunteer_city']))
+    {
+      $sql .= ' volunteer_city = ? ';
+      array_push($param, $form['volunteer_city']);
+
+    // Sorts Availablelity
+    if($form['availability'] == 1 || $form['availability'] == 0)
+    {
+      $sql .= ' AND volunteer_availability = ? ';
+      array_push($param, $form['availability']);
+    }
+  }
+  else
+  //Autrement si volunteer_city est vide je change la requete
+      {
+        if(isset($form['availability'])){
+          $sql .= " volunteer_availability = ? ";
+          array_push($param, $form["availability"]);
+      }
+    }
+  }
+
+  // Sorts Name and Age
   if(!empty($form['sorts'])){
     $sql .= ' ORDER BY ' .$form['sorts'];
   }
-  elseif(!empty($form['sorts'])){
-    $sql .= ' ORDER BY ' .$form['sorts'];
-  }
-  else{
 
-  }
-
-  //Sorts Availablelity
-
-  if(!empty($form['availablelity'] == 1)){
-    $sql .= ' WHERE volunteer_availability = 1 ';
-  }
-  elseif(!empty($form['availablelity'] == 0)){
-    $sql .= ' WHERE volunteer_availability = 0 ';
-  }
-  else {
-
-  }
-
-  //Sorts city
-  if(!empty($form['volunteer_city'])){
-    $sql .= ' WHERE ' .$form['volunteer_city'];
-  }
 
   $query = $db->prepare($sql);
-  $query->execute();
+  $query->execute($param);
 
   $result = $query->fetchall(PDO::FETCH_ASSOC);
 

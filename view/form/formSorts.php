@@ -2,15 +2,15 @@
   <p>Trier par :</p>
   <label for="">Nom/Age :</label>
   <select class="form-control ml-2 col-2" name="sorts">
-    <option>Choisir ---</option>
+    <option selected disabled>Choisir ---</option>
     <option value = "volunteer_name">Nom</option>
     <option value = "volunteer_age">Age</option>
   </select>
   <label for="">Ville :</label>
   <input type="text" name="volunteer_city" value="" placeholder="Ville"></input>
   <label for="">Disponibilité :</label>
-  <select class="form-control ml-2 col-2" name="availablelity">
-    <option value = "3">Choisir ---</option>
+  <select class="form-control ml-2 col-2" name="availability">
+    <option selected disabled>Choisir ---</option>
     <option value = "1">Disponible</option>
     <option value = "0">Indisponible</option>
   </select>

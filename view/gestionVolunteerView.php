@@ -5,7 +5,11 @@ include 'template/header.php';
   <h2 class = "">Panel de gestion des bénévoles</h2>
   <a href="../controller/addVolunteer.php" class="btn btn-primary btn-lg active mr-3" role="button">Ajouter +</a>
 </div>
-<div class="mb-1 ">
+<div class=" d-flex justify-content-start">
+  <a href="../service/sessionLogoutService.php" class = 'mr-2'>[Déconnexion]</a>
+  <a href="../controller/messagery.php" class = ''>[Messagerie]</a>
+</div>
+<div class="mb-1 mt-2">
   <?php require "form/formSorts.php"; ?>
 </div>
 <aside class="">
@@ -35,7 +39,7 @@ include 'template/header.php';
         <td><a href = "">Plus d'infos</a></td>
         <td>
           <a href='../controller/updateVolunteer.php?id=<?php echo $value['volunteer_id']; ?>' class="btn  active bg-warning text-dark" role="button" aria-pressed="true">Modifier</a>
-          <a href='../controller/deleteVolunteer.php?id=<?php echo $value['volunteer_id']; ?>' class="btn  active bg-danger text-dark" role="button" aria-pressed="true">Supprimer</a>
+          <a href='../controller/deleteVolunteer.php?id=<?php echo $value['volunteer_id']; ?>' class="btn  active bg-danger text-light" role="button" aria-pressed="true">Supprimer</a>
         </td>
       </tr>
       <?php } ?>
